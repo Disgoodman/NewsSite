@@ -1,0 +1,59 @@
+﻿@model aspnet_config.Models.PostList
+@{
+    ViewBag.Title = "Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+
+ 
+<center>    
+    <table class="table" width="1000" >
+        
+
+        @foreach (var item in Model.Posts)
+        {
+            
+            <tr>
+                <td align="center">
+                    <img src="@Url.Content(item.Photo_post)" width="900" height="700" alt="blogphoto" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date: @item.WasCreated
+                </td>
+            </tr>
+            <tr>
+                @{
+                    var user = Model.Users.First(u => u.Id_User == item.Owner_Post);
+                }
+                <td>
+                    Author: @user.Name_User  @user.Surname_User
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>
+                        @item.Name_Post
+                    </h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        @item.Text_Post
+                    </h5>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    Страница @(Model.Posts.PageCount < Model.Posts.PageNumber ? 0 : Model.Posts.PageNumber) из @Model.Posts.PageCount
+
+    @Html.PagedListPager(Model.Posts, page => Url.Action("Posts",  new { page }))
+    
+    
+    
+</center>    

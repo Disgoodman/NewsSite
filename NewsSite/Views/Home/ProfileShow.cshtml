@@ -1,0 +1,116 @@
+﻿@model aspnet_config.Models.UserPost
+@{
+    ViewBag.Title = "Admin's page";
+}
+
+
+
+@if (TestClass.TestInt != 1)
+{
+    <right>
+        <table class="table" align="right" width="800" height="800">
+            @foreach (var item in Model.Users)
+            {
+                @if (item.Id_User == TestClass.TestInt)
+                {
+                    <tr>
+                        <td>
+                            <h7>
+                                Email: @item.Email_User
+                            </h7>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h7>
+                                Surname: @item.Surname_User
+                            </h7>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h7>
+                                Name: @item.Name_User
+                            </h7>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h7>
+                                About user: @item.About_User
+                            </h7>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h7>
+                                Ban user: @item.Ban_User
+                            </h7>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="EditProfile" asp-controller="Home" asp-route-id="@item.Id_User">|Edit|</a> |
+                        </td>
+                    </tr>
+
+                    foreach (var item2 in Model.Posts)
+                    {
+                        if (item.Id_User == item2.Owner_Post)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content(item2.Photo_post)" width="50" height="50" alt="blogphoto" />
+
+                                </td>
+                                <td>Post name: @item2.Name_Post</td>
+                                <td>Post text: @item2.Text_Post</td>
+                                <td>Post author: @item.Name_User  @item.Surname_User</td>
+                                <td>
+                                    <a asp-action="EditPost" asp-controller="Home" asp-route-id="@item2.Id_Post">|Edit|</a>
+                                    <a asp-action="DeletePost" asp-controller="Home" asp-route-id="@item2.Id_Post">|Delete|</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    break;
+                }
+            }
+        </table>
+    </right>    
+
+}
+else if (TestClass.TestInt == 1)
+{
+    <table class="table">
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>@item.Id_User</td>
+                <td>@item.Email_User</td>
+                <td>@item.Name_User</td>
+                <td>@item.Surname_User</td>
+                <td>@item.Password_User</td>
+                <td>@item.About_User</td>
+                <td>@item.Ban_User</td>
+                <td>
+                    <a asp-action="EditProfile" asp-controller="Home" asp-route-id="@item.Id_User">|Edit|</a>
+                    <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id_User">|Delete|</a>
+                </td>
+            </tr>
+        }
+        @foreach (var item2 in Model.Posts)
+        {
+            <tr>
+                <td>@item2.Id_Post</td>
+                <td>@item2.Name_Post</td>
+                <td>@item2.Text_Post</td>
+                <td>@item2.Owner_Post</td>
+                <td>
+                    <a asp-action="EditPost" asp-controller="Home" asp-route-id="@item2.Id_Post">|Edit|</a>
+                    <a asp-action="DeletePost" asp-controller="Home" asp-route-id="@item2.Id_Post">|Delete|</a>
+                </td>
+            </tr>
+        }
+    </table>
+}

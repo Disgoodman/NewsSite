@@ -1,0 +1,20 @@
+﻿@model IEnumerable<aspnet_config.Models.Post>
+@{
+    ViewBag.Title = "Post and Profile";
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        if (item.Owner_Post == TestClass.TestOwner)
+        {
+            <tr>
+                @*<td>@item.Id_Post</td>*@
+                <td>@item.Name_Post</td>
+                <td>@item.Text_Post</td>
+                <td>@item.Owner_Post</td>
+            </tr>
+        }
+    }
+    <a asp-action="Profileshow" asp-controller="home">Back</a>
+</table>

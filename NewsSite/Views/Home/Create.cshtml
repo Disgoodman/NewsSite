@@ -1,0 +1,25 @@
+﻿@model aspnet_config.Models.User
+@{
+    ViewBag.Title = "Добавление пользователя";
+}
+<form asp-action="create" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Email_User" class="control-label">Email</label>
+        <input type="email" asp-for="Email_User" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name_User" class="control-label">Name</label>
+        <input type="text" asp-for="Name_User" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname_User" class="control-label">Surname</label>
+        <input type="text" asp-for="Surname_User" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password_User" class="control-label">Password</label>
+        <input type="text" asp-for="Password_User" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add" class="btn btn-default" />
+    </div>
+</form>

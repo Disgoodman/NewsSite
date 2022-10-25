@@ -1,0 +1,31 @@
+﻿@model aspnet_config.Models.Post
+@{
+    ViewBag.Title = "Deleting post";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>ID</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id_Post)
+        </dd>
+
+        <dt>Name</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name_Post)
+        </dd>
+
+        <dt>Text</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Text_Post)
+        </dd>
+    </dl>
+
+    <div>
+        <form asp-controller="Home" asp-action="DeletePost" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Delete" />
+            </div>
+        </form>
+    </div>
+</div>

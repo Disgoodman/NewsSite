@@ -1,0 +1,39 @@
+﻿@model IEnumerable<aspnet_config.Models.User>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+
+<a asp-action="Create">| Add users |</a>
+<a asp-action="CreatePost" asp-controller="Home">| Create post |</a>
+<a asp-action="Posts" asp-controller="Home">| All posts |</a>
+<a asp-action="ProfileShow" asp-controller="Home">| Show profile |</a>
+<a asp-action="Logout" asp-controller="Account">| Logout |</a>
+
+<td>
+    @if (true)
+    {
+        TestClass testClass = new TestClass();
+        int i = TestClass.TestInt;
+        @i
+    }
+</td>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id_User</td>
+            <td>@item.Email_User</td>
+            <td>@item.Name_User</td>
+            <td>@item.Surname_User</td>
+            <td>@item.About_User</td>
+            <td>@item.Ban_User</td>
+            <td>
+                <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id_User">Подробнее</a> |
+                <a asp-action="EditProfile" asp-controller="Home" asp-route-id="@item.Id_User">Изменить</a> |
+                <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id_User">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,19 @@
+﻿@model aspnet_config.Models.User
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Пользователь @Model.Email_User</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>ID</dt>
+        <dd>@Model.Id_User</dd>
+        <dt>Email</dt>
+        <dd>@Model.Email_User</dd>
+        <dt>Surname</dt>
+        <dd>@Model.Surname_User</dd>
+        <dt>Name</dt>
+        <dd>@Model.Name_User</dd>
+    </dl>
+    <a asp-action="Posts" asp-controller="home">Back</a>
+    <a asp-action="Logout" asp-controller="account">Log out</a>
+</div>
